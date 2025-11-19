@@ -49,7 +49,7 @@ export default function FunctionModules() {
       title: '个人数据中心',
       description: '个人数据存储与管理空间',
       icon: Server,
-      color: 'from-cyan-600 to-cyan-800',
+      color: 'from-yellow-500 to-yellow-600',
       badge: '数据中心',
       stats: '2.5GB已用'
     },
@@ -81,28 +81,34 @@ export default function FunctionModules() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div className="grid gap-1"  style={{
+    gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+    width: '100%',
+  }}>
       {modules.map(module => {
         const Icon = module.icon
         return (
           <div 
             key={module.id} 
-            className={`bg-gradient-to-br ${module.color} rounded-lg p-6 text-white card-hover cursor-pointer`} 
-            onClick={() => handleModuleClick(module)}
+            style={{ boxSizing: 'border-box' }}
           >
-            <div className="flex items-center justify-between mb-4">
-              <Icon className="h-8 w-8" />
-              <span className="bg-black/20 px-2 py-1 rounded text-xs">{module.badge}</span>
+              <div 
+                className={`bg-gradient-to-br ${module.color} rounded-lg p-2 text-white card-hover cursor-pointer h-full`} 
+                onClick={() => handleModuleClick(module)}>
+                <div className="flex items-center justify-between mb-1">
+                  <Icon className="h-6 w-6" />
+                  <span className="bg-black/20 px-1 py-0.5 rounded text-xs">{module.badge}</span>
+                </div>
+                <h3 className="text-base font-bold mb-1">{module.title}</h3>
+                <p className="text-xs mb-2">{module.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs">{module.stats}</span>
+                  <ArrowRight className="h-3 w-3" />
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold mb-2">{module.title}</h3>
-            <p className="text-sm mb-4">{module.description}</p>
-            <div className="flex items-center justify-between">
-              <span className="text-xs">{module.stats}</span>
-              <ArrowRight className="h-4 w-4" />
-            </div>
-          </div>
-        )
-      })}
+          )
+        })}
     </div>
   )
 }
