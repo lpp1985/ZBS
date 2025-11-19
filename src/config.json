@@ -1,0 +1,142 @@
+
+{
+  "server": {
+    "domain": "localhost",
+    "port": 3000,
+    "protocol": "http",
+    "api_version": "v1",
+    "environment": "development"
+  },
+  "database": {
+    "mysql": {
+      "host": "localhost",
+      "port": 3306,
+      "server_id": "mysql_server_001",
+      "database_name": "bio_datacenter",
+      "username": "bio_user",
+      "password": "bio_password_2024",
+      "charset": "utf8mb4",
+      "timezone": "+08:00",
+      "connection_limit": 100,
+      "acquire_timeout": 60000,
+      "timeout": 60000
+    },
+    "redis": {
+      "host": "localhost",
+      "port": 6379,
+      "password": "",
+      "database": 0,
+      "key_prefix": "bio_dc:",
+      "ttl": 3600
+    }
+  },
+  "security": {
+    "encryption": {
+      "salt": "bio_datacenter_salt_2024_secure_key",
+      "algorithm": "aes-256-gcm",
+      "key_length": 32,
+      "iv_length": 16
+    },
+    "jwt": {
+      "secret_key": "bio_datacenter_jwt_secret_2024",
+      "expires_in": "24h",
+      "refresh_expires_in": "7d"
+    },
+    "password_policy": {
+      "min_length": 8,
+      "require_uppercase": true,
+      "require_lowercase": true,
+      "require_numbers": true,
+      "require_special_chars": true,
+      "max_age_days": 90
+    }
+  },
+  "cloud_storage": {
+    "aws_s3": {
+      "region": "us-east-1",
+      "bucket_name": "bio-datacenter-storage",
+      "access_key_id": "AKIAIOSFODNN7EXAMPLE",
+      "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+      "endpoint_url": ""
+    },
+    "local_storage": {
+      "upload_path": "./uploads",
+      "max_file_size": "100MB",
+      "allowed_extensions": [".fasta", ".fastq", ".bam", ".sam", ".vcf", ".bed", ".txt", ".csv", ".json"]
+    }
+  },
+  "bioinformatics": {
+    "databases": {
+      "ncbi": {
+        "base_url": "https://www.ncbi.nlm.nih.gov",
+        "api_key": "",
+        "rate_limit": 3,
+        "timeout": 30000
+      },
+      "kegg": {
+        "base_url": "https://rest.kegg.jp",
+        "timeout": 30000
+      },
+      "uniprot": {
+        "base_url": "https://rest.uniprot.org",
+        "timeout": 30000
+      }
+    },
+    "tools": {
+      "blast": {
+        "executable_path": "/usr/local/bin/blast",
+        "database_path": "/data/blast/db",
+        "max_threads": 8
+      },
+      "samtools": {
+        "executable_path": "/usr/local/bin/samtools",
+        "max_memory": "4G"
+      }
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file_path": "./logs/app.log",
+    "max_file_size": "10MB",
+    "max_files": 5,
+    "format": "combined"
+  },
+  "monitoring": {
+    "metrics": {
+      "enabled": true,
+      "port": 9090,
+      "path": "/metrics"
+    },
+    "health_check": {
+      "enabled": true,
+      "interval": 30000,
+      "timeout": 5000
+    }
+  },
+  "email": {
+    "smtp": {
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "secure": false,
+      "username": "noreply@biodatacenter.com",
+      "password": "email_password_2024",
+      "from": "Bio数据中心 <noreply@biodatacenter.com>"
+    }
+  },
+  "features": {
+    "user_registration": true,
+    "email_verification": true,
+    "password_reset": true,
+    "two_factor_auth": false,
+    "api_rate_limiting": true,
+    "file_upload": true,
+    "job_scheduling": true
+  },
+  "limits": {
+    "max_file_upload_size": "100MB",
+    "max_concurrent_jobs_per_user": 5,
+    "max_storage_per_user": "10GB",
+    "session_timeout": 3600,
+    "api_rate_limit": 100
+  }
+}
