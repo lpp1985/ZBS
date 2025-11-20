@@ -98,7 +98,7 @@ export default function DatabaseGrid() {
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900">生物信息数据库</h3>
+        <h3 className="text-lg font-semibold text-gray-900">数据库中心（公有+私有）</h3>
         <button 
           onClick={handleAddDatabase} 
           className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
